@@ -31,4 +31,4 @@ jobs:
           token: ${{ steps.my-app.outputs.token }}
           event-type: refresh-automation-modules-list
           repository: SekoiaLab/platform
-          client-payload: '{"modules": ${{ env.modules }}}'
+          client-payload: '{"modules": $modules }'
