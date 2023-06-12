@@ -18,17 +18,10 @@ jobs:
         run: |
           echo "modules=$((cut -d "/" -f1 <<< "$(ls -a */manifest.json)") | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
 
-      - name: my-app-install token
-        id: my-app
-        uses: getsentry/action-github-app-token@v1
-        with:
-          app_id: ${{ secrets.APP_ID }}
-          private_key: ${{ secrets.APP_PRIVATE_KEY }}
-
       - name: Repository Dispatch
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ steps.my-app.outputs.token }}
+          token: "foo"
           event-type: refresh-automation-modules-list
           repository: SekoiaLab/platform
           client-payload: '{"modules": $modules }'
