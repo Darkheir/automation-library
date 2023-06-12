@@ -27,4 +27,4 @@ jobs:
           token: "foo"
           event-type: refresh-automation-modules-list
           repository: SekoiaLab/platform
-          client-payload: '{"modules": ${{ modules }}}'
+          client-payload: '{"modules": ${{ env.modules }}}'
